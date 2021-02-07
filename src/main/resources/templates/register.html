@@ -43,6 +43,9 @@
         <div class="form-outline mb-4">
             <input type="password" id="form3Example4" class="form-control"  th:field="*{password}"/>
             <label class="form-label" for="form3Example4">Password</label>
+            <p class="error-message"
+               th:each="error: ${#fields.errors('email')}"
+               th:text="${error}"></p>
         </div>
 
         <div class="form-outline mb-4">
