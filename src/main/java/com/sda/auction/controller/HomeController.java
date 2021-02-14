@@ -31,7 +31,6 @@ public class HomeController {
     @GetMapping("/register")
     public String getRegisterPage(Model model){
         model.addAttribute("userDto", new UserDto());
-
         return "register";
     }
 

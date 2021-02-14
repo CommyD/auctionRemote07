@@ -1,4 +1,13 @@
 .mainContainer {
     width: 600px;
     margin: 0 auto;
+    margin-left:auto;
+}
+
+select option{
+    text-transform: capitalize;
+}
+
+select option:before{
+    content: '';
 }
