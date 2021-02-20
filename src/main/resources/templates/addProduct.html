@@ -54,7 +54,7 @@
     </div>
 </header>
 <div class="mainContainer">
-    <form th:action="@{/addProduct}" method="post" th:object="${productDto}">
+    <form th:action="@{/addProduct}" method="post" th:object="${productDto}" enctype="multipart/form-data">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="form-outline mb-4">
             <input type="text" id="name" class="form-control" th:field="*{name}" />
@@ -115,6 +115,12 @@
             <p class="error-message"
                th:each="error: ${#fields.errors('endBiddingTime')}"
                th:text="${error}"></p>
+        </div>
+
+        <!-- End Bidding Time input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control"/>
         </div>
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4">Add Product</button>

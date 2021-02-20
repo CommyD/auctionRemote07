@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>View Product</title>
 
     <link rel="stylesheet" href="/aroma-template/vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/aroma-template/vendors/fontawesome/css/all.min.css">
@@ -73,31 +73,58 @@
     </div>
 </header>
 <!--================ End Header Menu Area =================-->
-<section class="section-margin calc-60px">
+<div class="product_image_area">
     <div class="container">
-        <div class="section-intro pb-60px">
-            <p>Popular Item in the market</p>
-            <h2>Trending <span class="section-intro__style">Product</span></h2>
-        </div>
-        <div class="row">
-            <!--================ we will generate div's as this for each product in the DB =================-->
-            <div th:each="product:${productDtoList}" class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card text-center card-product">
-                    <div class="card-product__img">
-                        <img class="card-img" th:src="${'data:image/png;base64,'+product.base64Image}" alt="">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="owl-carousel owl-theme s_Product_carousel owl-loaded owl-drag">
+
+                    <!-- <div class="single-prd-item">
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
                     </div>
-                    <div class="card-body">
-                        <p th:text="${product.category}"></p>
-                        <h4 class="card-product__title"><a href="/viewProduct" th:text="${product.name}"></a></h4>
-                        <p class="card-product__price" th:text="${product.startingPrice}+' $'"></p>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                    </div> -->
+                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1080px, 0px, 0px); transition: all 0s ease 0s; width: 2700px;"><div class="owl-item cloned" style="width: 540px;"><div class="single-prd-item">
+                        <img class="img-fluid" src="aroma-template/img/category/s-p1.jpg" alt="">
+                    </div></div><div class="owl-item cloned" style="width: 540px;"><div class="single-prd-item">
+                        <img class="img-fluid" src="aroma-template/img/category/s-p1.jpg" alt="">
+                    </div></div><div class="owl-item active" style="width: 540px;"><div class="single-prd-item">
+                        <img class="img-fluid" src="aroma-template/img/category/s-p1.jpg" alt="">
+                    </div></div><div class="owl-item cloned" style="width: 540px;"><div class="single-prd-item">
+                        <img class="img-fluid" src="aroma-template/img/category/s-p1.jpg" alt="">
+                    </div></div><div class="owl-item cloned" style="width: 540px;"><div class="single-prd-item">
+                        <img class="img-fluid" src="aroma-template/img/category/s-p1.jpg" alt="">
+                    </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3 th:text="${product.name}"></h3>
+                    <h2 th:text="${product.startingPrice}+' $'"></h2>
+                    <ul class="list">
+                        <li><a class="active" href="#">
+                            <span>Category</span>
+                            <span th:text="${product.category}"></span>
+                        </a></li>
+                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                    </ul>
+                    <p th:text="${product.description}"></p>
+                    <div class="product_count">
+                        <label for="qty">Quantity:</label>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
+                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
+                        <a class="button primary-btn" href="#">Add to Cart</a>
+                    </div>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</section>
-This is Home page
+</div>
 </body>
 </html>
 

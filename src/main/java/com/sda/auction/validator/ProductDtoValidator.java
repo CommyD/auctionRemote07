@@ -18,8 +18,10 @@ public class ProductDtoValidator {
         validateCategory(productDto.getCategory(), bindingResult);
         validateStartingPrice(productDto.getStartingPrice(), bindingResult);
         validateMinimumBidStep(productDto.getMinimumBidStep(), bindingResult);
+
         boolean isStartBiddingTimeValid = validateStartBiddingTime(productDto.getStartBiddingTime(), bindingResult);
         boolean isEndBiddingTimeValid = validateEndBiddingTime(productDto.getStartBiddingTime(), bindingResult);
+
         if (isStartBiddingTimeValid && isEndBiddingTimeValid) {
             validateBothBiddingTime(productDto.getStartBiddingTime(), productDto.getEndBiddingTime(), bindingResult);
         }
