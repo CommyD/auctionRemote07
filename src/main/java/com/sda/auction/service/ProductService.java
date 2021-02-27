@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +37,19 @@ public class ProductService {
 
     }
 
-    public List<ProductDto> getProductDtoList() {
+    public List<ProductDto> getProductDtoList(String authenticatedUserEmail) {
         List<Product> productList = productRepository.findAll();
-        return productMapper.map(productList);
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
+
+    public List<ProductDto> getActiveProductDtoList(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAllActive(LocalDateTime.now());
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
+
+    public List<ProductDto> getProductDtoListByBidder(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAllByBidder(authenticatedUserEmail);
+        return productMapper.map(productList, authenticatedUserEmail);
     }
 
     private void assignSeller(String loggedUserEmail, Product product) {
@@ -51,13 +62,16 @@ public class ProductService {
     }
 
 
-    public Optional<ProductDto> getProductDtoById(String productId) {
+    public Optional<ProductDto> getProductDtoById(String productId, String authenticatedUserEmail) {
         Optional<Product> optionalProduct = productRepository.findById(Integer.parseInt(productId));
         if(!optionalProduct.isPresent()) {
             return Optional.empty();
         }
-        ProductDto productDto = productMapper.map(optionalProduct.get());
+        ProductDto productDto = productMapper.map(optionalProduct.get(), authenticatedUserEmail);
         return Optional.of(productDto);
 
     }
+
+
+
 }

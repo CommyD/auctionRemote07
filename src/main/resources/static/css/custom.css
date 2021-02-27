@@ -2,6 +2,7 @@
     width: 600px;
     margin: 0 auto;
     margin-left:auto;
+    margin-top: 100px;
 }
 
 select option{
@@ -38,3 +39,4 @@ select option:before{
 .product-price-btn button:hover, input.bid-button {
     /*background-color: #79b0a1;*/
 }
+
