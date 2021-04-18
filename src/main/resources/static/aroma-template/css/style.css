@@ -165,7 +165,7 @@ a {
 }
 
 .header_area .navbar .nav .nav-item:hover .nav-link, .header_area .navbar .nav .nav-item.active .nav-link {
-    color: #384aeb
+    color: #b9620c
 }
 
 .header_area .navbar .nav .nav-item.submenu {
@@ -236,7 +236,7 @@ a {
 }
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
-    background: #384aeb;
+    background: #b9620c;
     color: #fff
 }
 
@@ -742,7 +742,7 @@ a {
 }
 
 .section-intro__style {
-    border-bottom: 2px solid #384aeb;
+    border-bottom: 2px solid #b9620c;
     padding-bottom: 8px
 }
 
@@ -931,7 +931,7 @@ a {
 }
 
 .card-product__imgOverlay li button:hover {
-    background: #384aeb
+    background: #b9620c
 }
 
 .card-product__imgOverlay li:not(:last-child) {
@@ -954,7 +954,7 @@ a {
 }
 
 .card-product:hover .card-product__title a {
-    color: #384aeb
+    color: #b9620c
 }
 
 .offer {
@@ -1299,7 +1299,7 @@ a {
 }
 
 .button:hover {
-    border-color: #384aeb;
+    border-color: #b9620c;
     background: transparent;
     color: #222
 }
@@ -1728,7 +1728,7 @@ a {
 }
 
 .blog_details h2:hover {
-    color: #384aeb
+    color: #b9620c
 }
 
 .blog_details p {
@@ -3083,7 +3083,7 @@ a {
 }
 
 .check_title h2 a {
-    color: #384aeb;
+    color: #b9620c;
     text-decoration: underline
 }
 
@@ -4251,7 +4251,7 @@ a {
     font-family: "Roboto", sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #384aeb;
+    color: #b9620c;
     margin-bottom: 10px
 }
 

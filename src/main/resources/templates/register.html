@@ -1,43 +1,49 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
 <!--<html lang="en">-->
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="mainContainer">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/aroma-template/vendors/fontawesome/css/all.min.css">
+
+</head>
+
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
     <form th:action="@{/register}" method="post" th:object="${userDto}">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" th:field="*{firstName}"/>
-                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" id="form3Example1" class="fadeIn second" th:field="*{firstName}" placeholder="First name"/>
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control"  th:field="*{lastName}"/>
-                    <label class="form-label" for="form3Example2">Last name</label>
+                    <input type="text" id="form3Example2" class="fadeIn second"  th:field="*{lastName}" placeholder="Last name"/>
                 </div>
             </div>
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" class="form-control"  th:field="*{email}"/>
-            <label class="form-label" for="form3Example3">Email address</label>
+            <input type="email" id="form3Example3" class="fadeIn third"  th:field="*{email}" placeholder="Email address"/>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form3Example4" class="form-control"  th:field="*{password}"/>
-            <label class="form-label" for="form3Example4">Password</label>
+            <input type="password" id="form3Example4" class="fadeIn third"  th:field="*{password}" placeholder="Password"/>
             <p class="error-message"
                th:each="error: ${#fields.errors('email')}"
                th:text="${error}"></p>
@@ -62,7 +68,11 @@
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
 
+        <div id="formFooter">
+            <a class="underlineHover" th:href="@{/login}">Already a member</a>
+        </div>
     </form>
+</div>
 </div>
 </body>
 </html>

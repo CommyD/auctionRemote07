@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +43,10 @@ public class ProductService {
     public List<ProductDto> getProductDtoList(String authenticatedUserEmail) {
         List<Product> productList = productRepository.findAll();
         return productMapper.map(productList, authenticatedUserEmail);
+    }
+
+    public Date getParse(String endBiddingTime) throws ParseException {
+        return new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime);
     }
 
     public List<ProductDto> getActiveProductDtoList(String authenticatedUserEmail) {

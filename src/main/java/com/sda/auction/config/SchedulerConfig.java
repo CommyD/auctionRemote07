@@ -21,7 +21,7 @@ public class SchedulerConfig {
 
     @Scheduled(fixedDelay = 5000)
     public void regularJob() {
-        System.out.println("Running job at " + LocalDateTime.now());
+        //System.out.println("Running job at " + LocalDateTime.now());
         bidService.assignedWinners();
     }
 }

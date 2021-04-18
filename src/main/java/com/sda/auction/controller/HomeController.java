@@ -9,7 +9,6 @@ import com.sda.auction.service.UserService;
 import com.sda.auction.validator.BidValidator;
 import com.sda.auction.validator.GenericValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.dialect.ProgressDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,11 +77,17 @@ public class HomeController {
 
     @PostMapping("/viewProduct/{productId}")
     public String postBid(Model model, @PathVariable(value = "productId") String productId,
-                          BidDto bidDto, BindingResult bindingResult, Authentication authentication) {
+                          BidDto bidDto, BindingResult bindingResult, Authentication authentication) throws ParseException {
         String loggedUserEmail = authentication.getName();
          bidValidator.validate(productId, bidDto, bindingResult);
-        Optional<ProductDto> optionalProductDto = productService.getProductDtoById(productId, authentication.getName());
+         Optional<ProductDto> optionalProductDto = productService.getProductDtoById(productId, authentication.getName());
+
+         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
+         String endBiddingTime = optionalProductDto.get().getEndBiddingTime();
+
          if (bindingResult.hasErrors()) {
+             model.addAttribute("endDate", productService.getParse(endBiddingTime));
+             model.addAttribute("userHeaderDto", userHeaderDto);
              model.addAttribute("bidDto",bidDto);
              model.addAttribute("product", optionalProductDto.get());
              return "viewProduct";
