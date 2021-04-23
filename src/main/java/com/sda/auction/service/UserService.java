@@ -23,14 +23,13 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, UserMapper userMapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, UserMapper userMapper,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userMapper = userMapper;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-
 
     public void register(UserDto userDto) {
         User user = userMapper.map(userDto);

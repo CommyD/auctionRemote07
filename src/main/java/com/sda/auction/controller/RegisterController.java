@@ -24,7 +24,6 @@ public class RegisterController {
         this.userDtoValidator = userDtoValidator;
     }
 
-
     @GetMapping("/register")
     public String getRegisterPage(Model model){
         log.info("getRegisterPage called");
@@ -51,5 +50,4 @@ public class RegisterController {
         model.addAttribute("userDto", userDto);
         return "login";
     }
-
 }

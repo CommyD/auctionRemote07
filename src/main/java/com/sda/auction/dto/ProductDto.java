@@ -6,7 +6,6 @@ import lombok.Data;
 public class ProductDto {
 
     private String id;
-
     private String name;
     private String description;
     private String category;
@@ -18,6 +17,4 @@ public class ProductDto {
     private String endBiddingTime;
     private String base64Image;
     private boolean winnerAssigned;
-
-
 }

@@ -18,10 +18,8 @@ public class ProductDtoValidator {
         validateCategory(productDto.getCategory(), bindingResult);
         validateStartingPrice(productDto.getStartingPrice(), bindingResult);
         validateMinimumBidStep(productDto.getMinimumBidStep(), bindingResult);
-
         boolean isStartBiddingTimeValid = validateStartBiddingTime(productDto.getStartBiddingTime(), bindingResult);
         boolean isEndBiddingTimeValid = validateEndBiddingTime(productDto.getStartBiddingTime(), bindingResult);
-
         if (isStartBiddingTimeValid && isEndBiddingTimeValid) {
             validateBothBiddingTime(productDto.getStartBiddingTime(), productDto.getEndBiddingTime(), bindingResult);
         }
@@ -34,7 +32,6 @@ public class ProductDtoValidator {
             bindingResult.addError(new FieldError("productDto", "endBiddingTime", "Invalid date! End time should be in the future and after bidding starts!"));
         }
     }
-
 
     private boolean isDatetimeFormatValid (String fieldName, String fieldValue, BindingResult bindingResult) {
         try {
@@ -52,9 +49,6 @@ public class ProductDtoValidator {
         return isDatetimeFormatValid("endBiddingTime", endBiddingTime, bindingResult);
     }
 
-
-
-
     private void validateFieldAsPositiveInteger (String fieldName, String fieldValue, BindingResult bindingResult) {
         try{
             Integer fieldValueAsInteger = Integer.parseInt(fieldValue);
@@ -71,9 +65,6 @@ public class ProductDtoValidator {
     private void validateMinimumBidStep(String minimumBidStep, BindingResult bindingResult) {
         validateFieldAsPositiveInteger("minimumBidStep", minimumBidStep, bindingResult);
     }
-
-
-
 
     private void validateCategory(String category, BindingResult bindingResult) {
         try{

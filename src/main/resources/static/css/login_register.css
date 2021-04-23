@@ -16,7 +16,7 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: contain;
+    background-size: cover;
 }
 
 a {
@@ -137,9 +137,41 @@ input[type=text], input[type=password] {
     border-radius: 5px 5px 5px 5px;
 }
 
+input[type=text], input[type=email] {
+    background-color: white;
+    color: black;
+    padding: 15px 32px;
+    text-align: initial;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 3px;
+    width: 85%;
+    border: 1px solid #b9620c;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus, input[type=email]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #b9620c;
+}
+
 input[type=text]:focus, input[type=password]:focus {
     background-color: #fff;
     border-bottom: 2px solid #b9620c;
+}
+
+.email-show {
+    position: inherit;
+    font-size: larger;
+    cursor: pointer;
+    color: #b9620c;
 }
 
 .password-show {
@@ -157,6 +189,10 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /*text color from inputs*/
+input[type=text]::placeholder, input[type=email]::placeholder {
+    color: #b9620c;
+}
+
 input[type=text]::placeholder, input[type=password]::placeholder {
     color: #b9620c;
 }
@@ -251,16 +287,22 @@ input[type=text]::placeholder, input[type=password]::placeholder {
     animation-delay: 0.6s;
 }
 
-.fadeIn.user-show {
-    -webkit-animation-delay: 1s;
-    -moz-animation-delay: 1s;
-    animation-delay: 1s;
-}
-
 .fadeIn.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
     animation-delay: 0.8s;
+}
+
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.fadeIn.email-show {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
 }
 
 .fadeIn.password-show {
@@ -268,13 +310,11 @@ input[type=text]::placeholder, input[type=password]::placeholder {
     -moz-animation-delay: 1s;
     animation-delay: 1s;
 }
-
-.fadeIn.fourth {
+.fadeIn.user-show {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;
 }
-
 /* Simple CSS3 Fade-in Animation */
 .underlineHover:after {
     display: block;
@@ -320,5 +360,3 @@ input[type=text]::placeholder, input[type=password]::placeholder {
     margin-left: -14px !important;
 }
 
-
-/*Video*/

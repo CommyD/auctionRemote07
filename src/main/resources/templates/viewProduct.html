@@ -74,7 +74,7 @@
                         </a></li>
                         <li><a href="#"><span>Starting Price</span>
                             <span th:text="' : $'+${product.startingPrice}"></span></a></li>
-                        <li><a href="#"><span>Your maximum bid</span>
+                        <li><a href="#" sec:authorize="hasRole('PARTICIPANT')"><span>Your maximum bid</span>
                             <span th:text="' : $'+${product.userMaximumBid}"></span></a></li>
                         <li><a href="#"><span>Auction ends at</span>
                             <span th:text="' : '+${product.endBiddingTime}"></span></a></li>
@@ -90,7 +90,7 @@
                         <p>The auction for this product is over</p>
                     </div>
                     <div class="product_count" th:if="${product.userMaximumBid != product.currentPrice && !product.winnerAssigned}">
-                        <form th:action="@{/viewProduct/{id}(id=${product.id})}" method="post" th:object="${bidDto}">
+                        <form th:action="@{/viewProduct/{id}(id=${product.id})}" method="post" th:object="${bidDto}" sec:authorize="hasRole('PARTICIPANT')">
                             <label for="qty">Your bid value:</label>
                             <input type="text" name="qty" id="qty" size="2" maxlength="12" class="input-text qty"
                                    th:field="*{value}">

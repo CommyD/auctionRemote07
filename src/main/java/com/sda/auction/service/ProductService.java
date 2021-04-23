@@ -40,11 +40,6 @@ public class ProductService {
 
     }
 
-    public List<ProductDto> getProductDtoList(String authenticatedUserEmail) {
-        List<Product> productList = productRepository.findAll();
-        return productMapper.map(productList, authenticatedUserEmail);
-    }
-
     public Date getParse(String endBiddingTime) throws ParseException {
         return new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime);
     }
@@ -68,7 +63,6 @@ public class ProductService {
         }
     }
 
-
     public Optional<ProductDto> getProductDtoById(String productId, String authenticatedUserEmail) {
         Optional<Product> optionalProduct = productRepository.findById(Integer.parseInt(productId));
         if(!optionalProduct.isPresent()) {
@@ -76,9 +70,5 @@ public class ProductService {
         }
         ProductDto productDto = productMapper.map(optionalProduct.get(), authenticatedUserEmail);
         return Optional.of(productDto);
-
     }
-
-
-
 }
